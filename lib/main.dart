@@ -3,6 +3,7 @@ import 'package:instagram_clone/view/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'view_models/home_page_view_model.dart';
+import 'view_models/timeline_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HomePageViewModel()),
+        ChangeNotifierProvider(create: (context) => TimelineViewModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

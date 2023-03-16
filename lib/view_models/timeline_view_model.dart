@@ -1,12 +1,16 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:instagram_clone/models/post_model.dart';
 
-class TimelineScreen extends StatelessWidget {
-  const TimelineScreen({super.key});
+class TimelineViewModel extends ChangeNotifier {
+  List<PostModel> posts = [];
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+  Future getListData() async {
+    await Future.delayed(Duration(seconds: 2));
+    int count = Faker().randomGenerator.integer(100, min: 30);
+    for (var i = 0; i < count; i++) {
+      posts.add(PostModel.fake());
+    }
+    notifyListeners();
   }
 }
