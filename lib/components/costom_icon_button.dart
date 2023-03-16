@@ -6,16 +6,18 @@ import 'package:flutter/src/widgets/placeholder.dart';
 class CustomIconButton extends StatelessWidget {
   final String icon;
   final Function onPressed;
+  final double padding;
   const CustomIconButton({
     Key? key,
     required this.icon,
     required this.onPressed,
+    this.padding = 25,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 25),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0, top: padding),
       child: Align(
         alignment: Alignment.topCenter,
         child: GestureDetector(
