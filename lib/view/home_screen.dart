@@ -23,11 +23,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  PreferredSizeWidget? get appbar =>
-      context.watch<HomePageViewModel>().page == 0
-          ? const TimelineAppbar()
-          : null;
-  Widget get screen => context.watch<HomePageViewModel>().page == 0
-      ? const TimelineScreen()
-      : Container();
+  PreferredSizeWidget? get appbar {
+    switch (context.watch<HomePageViewModel>().page) {
+      case 0:
+        return const TimelineAppbar();
+
+      default:
+        return null;
+    }
+  }
+
+  Widget get screen {
+    switch (context.watch<HomePageViewModel>().page) {
+      case 0:
+        return const TimelineScreen();
+      default:
+        return Container();
+    }
+  }
 }
