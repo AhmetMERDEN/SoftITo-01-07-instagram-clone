@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:instagram_clone/view_models/discovery_view_model.dart';
 import 'package:provider/provider.dart';
-
-import 'costom_icon_button.dart';
 
 class DiscoveryAppbar extends StatelessWidget implements PreferredSizeWidget {
   const DiscoveryAppbar({super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(65);
+  Size get preferredSize => const Size.fromHeight(65);
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -63,12 +59,10 @@ class DiscoveryAppbar extends StatelessWidget implements PreferredSizeWidget {
                   onTap: () {
                     context.read<DiscoveryViewModel>().changeSearchView();
                   },
-                  child: FittedBox(
-                    child: Text(
-                      "Cancel",
-                      overflow: TextOverflow.fade,
-                      style: TextStyle(fontSize: 14),
-                    ),
+                  child: Text(
+                    "Cancel",
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(fontSize: 14),
                   ),
                 ),
               )
