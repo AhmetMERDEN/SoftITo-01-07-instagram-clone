@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/view/home_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'app_init.dart';
 import 'view_models/home_page_view_model.dart';
 import 'view_models/timeline_view_model.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen(),
+        home: const AppInit(),
       ),
     );
   }
