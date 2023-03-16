@@ -15,6 +15,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(
+          top: 10.0,
           left: 18.0,
           right: 18.0,
         ),
