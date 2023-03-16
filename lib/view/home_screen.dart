@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar,
-      body: screen,
+      body: RefreshIndicator(onRefresh: onRefresh, child: screen),
       backgroundColor: Colors.black,
       bottomNavigationBar: const CustomBottomNavBar(),
     );
@@ -41,4 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
         return Container();
     }
   }
+}
+
+Future<void> onRefresh() async {
+  await Future.delayed(Duration(seconds: 1));
 }
