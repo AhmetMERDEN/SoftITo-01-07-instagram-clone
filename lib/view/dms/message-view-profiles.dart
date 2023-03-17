@@ -15,76 +15,65 @@ class MessageProfiles extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Stack(
-            children: [
-              CircleAvatar(
-                radius: 35,
-              ),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              _storyItem(faker.image.image(), faker.person.firstName()),
-              index == 0
-                  ? Positioned(
-                      right: 0,
-                      child: CircleAvatar(
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
-                        radius: 15,
-                        backgroundColor: Colors.grey,
-                      ),
-                    )
-                  : Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Icon(Icons.add),
-                                height: 25,
-                                width: 70,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
-            ],
-          ),
+          child:
+              _storyItem(faker.image.image(), faker.person.firstName(), index),
         ),
       ),
     );
+
+    // Container(
+    //   height: MediaQuery.of(context).size.height * .60,
+    //   child: Column(
+    //     children: dmsBox,
+    //   ),
+    // ),
   }
 
-  Widget _storyItem(String image, String name) {
+  Widget _storyItem(String image, String name, int index) {
     return Column(
       children: [
-        Container(
-          margin: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-          ),
-          child: Container(
-            margin: EdgeInsets.all(3),
-            height: 70,
-            width: 70,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: NetworkImage(image),
-                fit: BoxFit.cover,
+        SizedBox(
+          width: 85,
+          height: 85,
+          child: Stack(
+            children: [
+              Container(
+                margin: EdgeInsets.all(3),
+                height: 75,
+                width: 75,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(image),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              index == 0
+                  ? Align(
+                      alignment: Alignment.topRight,
+                      child: CircleAvatar(
+                        foregroundColor: Colors.white,
+                        child: Icon(
+                          Icons.add,
+                          // color: Colors.white,
+                        ),
+                        radius: 15,
+                        backgroundColor: Colors.grey.shade600,
+                      ),
+                    )
+                  : Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade600.withOpacity(0.95),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Icon((Icons.add)),
+                        height: 35,
+                        width: 70,
+                      ),
+                    )
+            ],
           ),
         ),
         SizedBox(
