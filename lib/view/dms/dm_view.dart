@@ -61,7 +61,6 @@ class _DmPageState extends State<DmPage> {
                 height: 40,
               ),
             ),
-
             Container(
               height: 125,
               child: ListView.builder(
@@ -73,13 +72,12 @@ class _DmPageState extends State<DmPage> {
                 ),
               ),
             ),
-
-            // Container(
-            //   height: MediaQuery.of(context).size.height * .60,
-            //   child: Column(
-            //     children: dmsBox,
-            //   ),
-            // ),
+            Container(
+              height: MediaQuery.of(context).size.height * .60,
+              child: Column(
+                children: dmsBox,
+              ),
+            ),
           ],
         ),
       ),
@@ -166,8 +164,13 @@ class DmBoxWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          CircleAvatar(
-            backgroundImage: AssetImage(imagePath),
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage(imagePath),
+            )),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -176,14 +179,14 @@ class DmBoxWidget extends StatelessWidget {
               Text(
                 name,
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
               Text(
                 message,
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               )
