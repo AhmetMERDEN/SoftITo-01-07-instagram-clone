@@ -1,25 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:instagram_clone/models/dm_list.dart';
 
-class DmPage extends StatefulWidget {
-  const DmPage({super.key});
+class MessageSearch extends StatelessWidget {
+  const MessageSearch({super.key});
 
-  @override
-  State<DmPage> createState() => _DmPageState();
-}
-
-class _DmPageState extends State<DmPage> {
-  TextEditingController textController = TextEditingController();
-  List<Widget> dmsBox = dmsList
-      .map((item) => DmBoxWidget(
-            imagePath: item['imagePath'],
-            message: item['message'],
-            name: item['fullName'],
-          ))
-      .toList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,68 +85,9 @@ class _DmPageState extends State<DmPage> {
                   ),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height * .60,
-                child: Column(
-                  children: dmsBox,
-                ),
-              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class DmBoxWidget extends StatelessWidget {
-  String name;
-  String message;
-  String imagePath;
-  DmBoxWidget({
-    Key? key,
-    required this.name,
-    required this.message,
-    required this.imagePath,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * .98,
-      height: MediaQuery.of(context).size.height * .09,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          CircleAvatar(
-            backgroundImage: AssetImage(imagePath),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-              Text(
-                message,
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              )
-            ],
-          ),
-          Icon(
-            Icons.camera_alt_outlined,
-            size: 30,
-            color: Colors.white,
-          )
-        ],
       ),
     );
   }
