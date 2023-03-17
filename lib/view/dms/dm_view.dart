@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -35,81 +36,107 @@ class _DmPageState extends State<DmPage> {
         ],
       ),
       body: SafeArea(
-        child: Expanded(
-          child: Column(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                child: TextField(
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      filled: true,
+                      hintStyle: TextStyle(color: Colors.grey[800]),
+                      hintText: "Search",
+                      fillColor: Colors.white70),
+                ),
+                height: 40,
+              ),
+            ),
+
+            Container(
+              height: 125,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: _storyItem(
+                      faker.image.image(), faker.person.firstName(), index),
+                ),
+              ),
+            ),
+
+            // Container(
+            //   height: MediaQuery.of(context).size.height * .60,
+            //   child: Column(
+            //     children: dmsBox,
+            //   ),
+            // ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _storyItem(String image, String name, int index) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 85,
+          height: 85,
+          child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        filled: true,
-                        hintStyle: TextStyle(color: Colors.grey[800]),
-                        hintText: "Search",
-                        fillColor: Colors.white70),
-                  ),
-                  height: 40,
-                ),
-              ),
               Container(
-                height: 125,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 35,
-                        ),
-                        index == 0
-                            ? Positioned(
-                                right: 0,
-                                child: CircleAvatar(
-                                  child: Icon(Icons.add),
-                                  radius: 15,
-                                  backgroundColor: Colors.amber,
-                                ),
-                              )
-                            : Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.amber,
-                                              borderRadius:
-                                                  BorderRadius.circular(15)),
-                                          child: Icon(Icons.add),
-                                          height: 25,
-                                          width: 70,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )
-                      ],
-                    ),
+                margin: EdgeInsets.all(3),
+                height: 75,
+                width: 75,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(image),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height * .60,
-                child: Column(
-                  children: dmsBox,
-                ),
-              ),
+              index == 0
+                  ? Align(
+                      alignment: Alignment.topRight,
+                      child: CircleAvatar(
+                        foregroundColor: Colors.white,
+                        child: Icon(
+                          Icons.add,
+                          // color: Colors.white,
+                        ),
+                        radius: 15,
+                        backgroundColor: Colors.grey.shade600,
+                      ),
+                    )
+                  : Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade600.withOpacity(0.95),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: GestureDetector(child: Icon((Icons.edit))),
+                        height: 35,
+                        width: 70,
+                      ),
+                    )
             ],
           ),
         ),
-      ),
+        SizedBox(
+          width: 70,
+          child: Text(
+            name,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
+        )
+      ],
     );
   }
 }
@@ -163,6 +190,40 @@ class DmBoxWidget extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget _storyItem(String image, String name) {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+          child: Container(
+            margin: EdgeInsets.all(3),
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: NetworkImage(image),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 70,
+          child: Text(
+            name,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
+        )
+      ],
     );
   }
 }
