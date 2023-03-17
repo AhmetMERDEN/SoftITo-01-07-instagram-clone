@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:instagram_clone/models/dm_list.dart';
+import 'package:instagram_clone/view/home_screen.dart';
 
 class DmPage extends StatefulWidget {
   const DmPage({super.key});
@@ -26,13 +27,17 @@ class _DmPageState extends State<DmPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
         backgroundColor: Colors.black,
         centerTitle: false,
         title: Text("DM"),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.video_call_sharp)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.add)),
         ],
       ),
       body: SafeArea(
@@ -41,6 +46,7 @@ class _DmPageState extends State<DmPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
+                // ignore: sort_child_properties_last
                 child: TextField(
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.search),
@@ -119,7 +125,7 @@ class _DmPageState extends State<DmPage> {
                         decoration: BoxDecoration(
                             color: Colors.grey.shade600.withOpacity(0.95),
                             borderRadius: BorderRadius.circular(15)),
-                        child: GestureDetector(child: Icon((Icons.edit))),
+                        child: Icon((Icons.add)),
                         height: 35,
                         width: 70,
                       ),
