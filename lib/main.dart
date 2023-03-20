@@ -1,14 +1,18 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/view/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'app_init.dart';
 import 'view_models/home_page_view_model.dart';
 import 'view_models/timeline_view_model.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(
+      DevicePreview(
+        enabled: false,
+        builder: (context) => MyApp(), // Wrap your app
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
