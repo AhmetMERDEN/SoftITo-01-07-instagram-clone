@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:instagram_clone/view/dms/dm_view.dart';
 
 class CustomIconButton extends StatelessWidget {
   final String icon;
@@ -22,7 +23,11 @@ class CustomIconButton extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: GestureDetector(
           onTap: () {
-            onPressed();
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const DmPage(),
+              ),
+            );
           },
           child: Image.asset(
             icon,
