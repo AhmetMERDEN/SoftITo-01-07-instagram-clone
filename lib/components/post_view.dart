@@ -1,9 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:instagram_clone/components/costom_icon_button.dart';
 import 'package:instagram_clone/models/post_model.dart';
-
-import 'costom_icon_button.dart';
 
 class PostView extends StatelessWidget {
   final PostModel post;
@@ -14,6 +14,7 @@ class PostView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -35,13 +36,51 @@ class PostView extends StatelessWidget {
           Row(
             children: [
               CustomIconButton(
-                  icon: "assets/icons/notifications.png", onPressed: () {}),
+                  padding: 10,
+                  icon: "assets/icons/notifications.png",
+                  onPressed: () {}),
               CustomIconButton(
-                  icon: "assets/icons/comment.png", onPressed: () {}),
-              CustomIconButton(icon: "assets/icons/send.png", onPressed: () {}),
+                  padding: 10,
+                  icon: "assets/icons/comment.png",
+                  onPressed: () {}),
+              CustomIconButton(
+                  padding: 10, icon: "assets/icons/send.png", onPressed: () {}),
               Spacer(),
-              CustomIconButton(icon: "assets/icons/save.png", onPressed: () {}),
+              CustomIconButton(
+                  padding: 10, icon: "assets/icons/save.png", onPressed: () {}),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "${post.likeCount} likes",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          RichText(
+            text: TextSpan(
+                text: post.username,
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    print(post.username);
+                  },
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: [
+                  TextSpan(text: " "),
+                  TextSpan(
+                    text: post.content,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  )
+                ]),
           ),
         ],
       ),

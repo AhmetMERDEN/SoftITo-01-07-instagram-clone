@@ -1,10 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:instagram_clone/models/dm_list.dart';
-import 'package:instagram_clone/view/home_screen.dart';
 
 class DmPage extends StatefulWidget {
   const DmPage({super.key});
@@ -55,13 +52,12 @@ class _DmPageState extends State<DmPage> {
                       ),
                       filled: true,
                       hintStyle: TextStyle(color: Colors.grey[800]),
-                      hintText: "Search",
+                      hintText: "Ara",
                       fillColor: Colors.white70),
                 ),
                 height: 40,
               ),
             ),
-
             Container(
               height: 125,
               child: ListView.builder(
@@ -73,13 +69,12 @@ class _DmPageState extends State<DmPage> {
                 ),
               ),
             ),
-
-            // Container(
-            //   height: MediaQuery.of(context).size.height * .60,
-            //   child: Column(
-            //     children: dmsBox,
-            //   ),
-            // ),
+            Container(
+              height: MediaQuery.of(context).size.height * .60,
+              child: Column(
+                children: dmsBox,
+              ),
+            ),
           ],
         ),
       ),
@@ -166,8 +161,13 @@ class DmBoxWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          CircleAvatar(
-            backgroundImage: AssetImage(imagePath),
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage(imagePath),
+            )),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -176,14 +176,14 @@ class DmBoxWidget extends StatelessWidget {
               Text(
                 name,
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
               Text(
                 message,
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               )
