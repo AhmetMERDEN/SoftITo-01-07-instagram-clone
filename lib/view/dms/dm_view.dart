@@ -52,7 +52,7 @@ class _DmPageState extends State<DmPage> {
                       ),
                       filled: true,
                       hintStyle: TextStyle(color: Colors.grey[800]),
-                      hintText: "Search",
+                      hintText: "Ara",
                       fillColor: Colors.white70),
                 ),
                 height: 40,
