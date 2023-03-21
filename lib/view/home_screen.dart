@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/Profile/profile_Page.dart';
 import 'package:instagram_clone/components/bottom_navbar.dart';
 import 'package:instagram_clone/components/timeline_appbar.dart';
 import 'package:instagram_clone/screens/home_page.dart';
@@ -43,11 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
       case 0:
         return const TimelineScreen();
 
+
+      case 4:
+        return const ProfilePage();
+
       case 3:
         return HomePage();
 
       case 1:
         return DiscoveryScreen();
+
 
       default:
         return Container(
