@@ -5,7 +5,9 @@ import 'package:instagram_clone/view/home/timeline_screen.dart';
 import 'package:instagram_clone/view_models/home_page_view_model.dart';
 import 'package:provider/provider.dart';
 
+
 import '../kesfet/discovery.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar,
-      body: RefreshIndicator(onRefresh: onRefresh, child: screen),
+      body: screen,
       backgroundColor: Colors.black,
       bottomNavigationBar: const CustomBottomNavBar(),
     );
@@ -29,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (context.watch<HomePageViewModel>().page) {
       case 0:
         return const TimelineAppbar();
-
+      case 1:
+        return const DiscoveryAppbar();
       default:
         return null;
     }
@@ -52,8 +55,4 @@ class _HomeScreenState extends State<HomeScreen> {
         );
     }
   }
-}
-
-Future<void> onRefresh() async {
-  await Future.delayed(Duration(seconds: 1));
 }
