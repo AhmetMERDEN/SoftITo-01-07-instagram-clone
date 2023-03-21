@@ -7,6 +7,10 @@ import 'app_init.dart';
 import 'view_models/discovery_view_model.dart';
 import 'view_models/home_page_view_model.dart';
 import 'view_models/timeline_view_model.dart';
+import 'screens/content_screen.dart';
+import 'screens/home_page.dart';
+import 'screens/like_icon.dart';
+import 'screens/options_screen.dart';
 
 void main() => runApp(
       DevicePreview(
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const AppInit(),
+        home: AppInit(),
       ),
     );
   }
